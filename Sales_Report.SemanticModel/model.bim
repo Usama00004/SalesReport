@@ -268,6 +268,19 @@
             "lineageTag": "196ecdc1-bce4-4621-8b56-07739dbb4e7b",
             "sourceColumn": "customerNumber",
             "summarizeBy": "none"
+          },
+          {
+            "name": "shippedDate - Copy",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "24551810-d45d-4bbb-8409-2206041a378d",
+            "sourceColumn": "shippedDate - Copy",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "fb75ee7a-faac-4a2d-9435-a545be97d1e1",
@@ -282,9 +295,10 @@
                 "    #\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_orders csv\" = Source{[#\"Folder Path\"=\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\\",Name=\"orders.csv\"]}[Content],",
                 "    #\"Imported CSV\" = Csv.Document(#\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_orders csv\",[Delimiter=\",\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"orderNumber\", Int64.Type}, {\"orderDate\", type date}, {\"requiredDate\", type date}, {\"shippedDate\", type text}, {\"status\", type text}, {\"comments\", type text}, {\"customerNumber\", Int64.Type}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"orderNumber\", Int64.Type}, {\"orderDate\", type date}, {\"requiredDate\", type date}, {\"shippedDate\", type text}, {\"status\", type text}, {\"comments\", type text}, {\"customerNumber\", Int64.Type}}),",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(#\"Changed Type\", \"shippedDate\", \"shippedDate - Copy\")",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Duplicated Column\""
               ],
               "type": "m"
             }
