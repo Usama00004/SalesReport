@@ -127,6 +127,13 @@
         "fromTable": "order details",
         "toColumn": "productCode",
         "toTable": "products"
+      },
+      {
+        "name": "AutoDetected_bf5e2cba-62c1-497e-ac04-e2039ae1b9a6",
+        "fromColumn": "productLine",
+        "fromTable": "products",
+        "toColumn": "productLine",
+        "toTable": "productlines"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -1612,19 +1619,6 @@
             "summarizeBy": "none"
           },
           {
-            "name": "comments",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "fc371663-75e7-48ad-a57e-e93d8ab97688",
-            "sourceColumn": "comments",
-            "summarizeBy": "none"
-          },
-          {
             "name": "customerNumber",
             "annotations": [
               {
@@ -1651,9 +1645,10 @@
                 "    #\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_orders csv1\" = Source{[#\"Folder Path\"=\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\\",Name=\"orders.csv\"]}[Content],",
                 "    #\"Imported CSV\" = Csv.Document(#\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_orders csv1\",[Delimiter=\",\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"orderNumber\", Int64.Type}, {\"orderDate\", type date}, {\"requiredDate\", type date}, {\"shippedDate\", type text}, {\"status\", type text}, {\"comments\", type text}, {\"customerNumber\", Int64.Type}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"orderNumber\", Int64.Type}, {\"orderDate\", type date}, {\"requiredDate\", type date}, {\"shippedDate\", type text}, {\"status\", type text}, {\"comments\", type text}, {\"customerNumber\", Int64.Type}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"comments\"})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }
@@ -2400,7 +2395,7 @@
         ],
         "columns": [
           {
-            "name": "Column1",
+            "name": "productLine",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -2408,12 +2403,12 @@
               }
             ],
             "dataType": "string",
-            "lineageTag": "03e57be2-f564-4974-8ca0-82efee402596",
-            "sourceColumn": "Column1",
+            "lineageTag": "4b97bb00-75ff-4d6e-9b58-f8ebc46436ff",
+            "sourceColumn": "productLine",
             "summarizeBy": "none"
           },
           {
-            "name": "Column2",
+            "name": "textDescription",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -2421,34 +2416,8 @@
               }
             ],
             "dataType": "string",
-            "lineageTag": "34cd073b-7a10-4a5d-b47a-a05a258f0e5d",
-            "sourceColumn": "Column2",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Column3",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "6566bfa9-9684-46c1-ab1d-d5f666f2380e",
-            "sourceColumn": "Column3",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Column4",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "f20eddce-4b9c-42c4-a579-2d10b48b5acd",
-            "sourceColumn": "Column4",
+            "lineageTag": "672d0595-d5a2-4737-958e-ade8a7628b57",
+            "sourceColumn": "textDescription",
             "summarizeBy": "none"
           }
         ],
@@ -2463,9 +2432,12 @@
                 "    Source = Folder.Files(\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\"),",
                 "    #\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_productlines csv1\" = Source{[#\"Folder Path\"=\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\\",Name=\"productlines.csv\"]}[Content],",
                 "    #\"Imported CSV\" = Csv.Document(#\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_productlines csv1\",[Delimiter=\",\", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Imported CSV\",{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}, {\"Column4\", type text}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Imported CSV\",{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}, {\"Column4\", type text}}),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"productLine\", type text}, {\"textDescription\", type text}, {\"htmlDescription\", type text}, {\"image\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type1\",{\"htmlDescription\", \"image\"})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }
@@ -2562,7 +2534,7 @@
             "formatString": "0",
             "lineageTag": "6f6afc32-f3b9-4646-8514-80339d4839dd",
             "sourceColumn": "quantityInStock",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           },
           {
             "name": "buyPrice",
@@ -2579,7 +2551,7 @@
             "dataType": "double",
             "lineageTag": "a2fc9952-7fbc-4770-b877-133115da5675",
             "sourceColumn": "buyPrice",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           },
           {
             "name": "MSRP",
@@ -2596,7 +2568,7 @@
             "dataType": "double",
             "lineageTag": "670d6847-771e-4a22-b3cd-27831c42cb69",
             "sourceColumn": "MSRP",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "fc2e9f70-13d4-49b2-8e15-7dfb51611238",
