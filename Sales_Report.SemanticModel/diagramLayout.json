@@ -4,27 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 0
+        "x": 506.36364329944956,
+        "y": 424.54546148126775
       },
       "nodes": [
         {
           "location": {
-            "x": 294.1847511806298,
-            "y": 34.934890822655788
-          },
-          "nodeIndex": "classicmodels",
-          "nodeLineageTag": "fb75ee7a-faac-4a2d-9435-a545be97d1e1",
-          "size": {
-            "height": 248,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 10,
-            "y": -10
+            "x": 649.14594591222749,
+            "y": 716.06647729316057
           },
           "nodeIndex": "customers",
           "nodeLineageTag": "1395d7a6-fabd-423f-a627-2e27d64fc06e",
@@ -32,12 +19,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 1146.3616394153598,
-            "y": 4
+            "x": 1454.7342827398106,
+            "y": 300.01716247582493
           },
           "nodeIndex": "employees",
           "nodeLineageTag": "f2186d47-79d4-464a-bd53-cee327fab99f",
@@ -45,51 +32,51 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 8
         },
         {
           "location": {
-            "x": 862.36163941535983,
-            "y": -8
+            "x": 1135.788771006718,
+            "y": 401.43484010512549
           },
           "nodeIndex": "offices",
           "nodeLineageTag": "0ddac211-8aa1-4c41-a337-d38f211bc750",
           "size": {
-            "height": 296,
+            "height": 206.22727272727275,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 7
         },
         {
           "location": {
-            "x": 578.36163941535983,
-            "y": 72.2598834550923
+            "x": 348.00133431891504,
+            "y": 465.90909090909093
           },
           "nodeIndex": "order details",
           "nodeLineageTag": "f9006fae-bc37-4d4f-9b2f-c052887168e6",
           "size": {
-            "height": 200,
+            "height": 294.31818181818187,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
         },
         {
           "location": {
-            "x": 1420.3616394153598,
-            "y": 26
+            "x": 33.980135320767658,
+            "y": 323.75384694472569
           },
           "nodeIndex": "orders",
           "nodeLineageTag": "3f42a750-ac67-45c0-b87c-53713ec0c290",
           "size": {
-            "height": 248,
+            "height": 315.0454545454545,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 5
         },
         {
           "location": {
-            "x": 1704.3616394153598,
-            "y": 62
+            "x": 1370.8375451499596,
+            "y": 812.44735963167807
           },
           "nodeIndex": "payments",
           "nodeLineageTag": "d1c8003c-93b3-4885-9dc6-7160d1ed6fca",
@@ -97,12 +84,12 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 1988.3616394153598,
-            "y": 62
+            "x": 917.99481784453951,
+            "y": 180.12309162285425
           },
           "nodeIndex": "productlines",
           "nodeLineageTag": "a2887a79-92d5-4735-87f2-420361bf0a00",
@@ -110,12 +97,12 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         },
         {
           "location": {
-            "x": 2272.3616394153596,
-            "y": 14
+            "x": 621.032572415705,
+            "y": 308.80073865475373
           },
           "nodeIndex": "products",
           "nodeLineageTag": "fc2e9f70-13d4-49b2-8e15-7dfb51611238",
@@ -123,11 +110,11 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         }
       ],
       "name": "All tables",
-      "zoomValue": 100,
+      "zoomValue": 88,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
