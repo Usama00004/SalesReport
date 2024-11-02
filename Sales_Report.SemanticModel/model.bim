@@ -968,32 +968,6 @@
             "summarizeBy": "none"
           },
           {
-            "name": "contactLastName",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "ca71fa7a-2793-4b87-9bb3-61c94dd47021",
-            "sourceColumn": "contactLastName",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "contactFirstName",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "cee788f5-9da8-4219-b098-f5a784da78a2",
-            "sourceColumn": "contactFirstName",
-            "summarizeBy": "none"
-          },
-          {
             "name": "phone",
             "annotations": [
               {
@@ -1110,6 +1084,19 @@
             "lineageTag": "138ff58a-cbac-4dea-9275-d58403224e46",
             "sourceColumn": "creditLimit",
             "summarizeBy": "sum"
+          },
+          {
+            "name": "FullName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7b69c463-5172-4d30-bb8f-aa4f155ddbea",
+            "sourceColumn": "FullName",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "1395d7a6-fabd-423f-a627-2e27d64fc06e",
@@ -1124,9 +1111,11 @@
                 "    #\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_customers csv1\" = Source{[#\"Folder Path\"=\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\\",Name=\"customers.csv\"]}[Content],",
                 "    #\"Imported CSV\" = Csv.Document(#\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_customers csv1\",[Delimiter=\",\", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customerNumber\", Int64.Type}, {\"customerName\", type text}, {\"contactLastName\", type text}, {\"contactFirstName\", type text}, {\"phone\", type text}, {\"addressLine1\", type text}, {\"addressLine2\", type text}, {\"city\", type text}, {\"state\", type text}, {\"postalCode\", type text}, {\"country\", type text}, {\"salesRepEmployeeNumber\", type text}, {\"creditLimit\", Int64.Type}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customerNumber\", Int64.Type}, {\"customerName\", type text}, {\"contactLastName\", type text}, {\"contactFirstName\", type text}, {\"phone\", type text}, {\"addressLine1\", type text}, {\"addressLine2\", type text}, {\"city\", type text}, {\"state\", type text}, {\"postalCode\", type text}, {\"country\", type text}, {\"salesRepEmployeeNumber\", type text}, {\"creditLimit\", Int64.Type}}),",
+                "    #\"Trimmed Text\" = Table.TransformColumns(#\"Changed Type\",{{\"contactFirstName\", Text.Trim, type text}, {\"contactLastName\", Text.Trim, type text}}),",
+                "    #\"Merged Columns\" = Table.CombineColumns(#\"Trimmed Text\",{\"contactLastName\", \"contactFirstName\"},Combiner.CombineTextByDelimiter(\" \", QuoteStyle.None),\"FullName\")",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Merged Columns\""
               ],
               "type": "m"
             }
