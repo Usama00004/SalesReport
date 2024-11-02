@@ -1445,6 +1445,59 @@
             "lineageTag": "3c6121da-f3a8-4a80-bd36-8cbe50a86ed3",
             "sourceColumn": "Sales",
             "summarizeBy": "sum"
+          },
+          {
+            "name": "buyPrice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "cf0152c3-31a4-440c-a976-6d627b760d37",
+            "sourceColumn": "buyPrice",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "total_buy_price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "6da8fdf1-93f2-47e4-81a7-ee919271bd89",
+            "sourceColumn": "total_buy_price",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "profit",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "7d4085e8-684d-47ce-8193-d0e5802787c5",
+            "sourceColumn": "profit",
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "f9006fae-bc37-4d4f-9b2f-c052887168e6",
@@ -1461,9 +1514,16 @@
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"orderNumber\", Int64.Type}, {\"productCode\", type text}, {\"quantityOrdered\", Int64.Type}, {\"priceEach\", type number}, {\"orderLineNumber\", Int64.Type}}),",
                 "    #\"Added Custom\" = Table.AddColumn(#\"Changed Type\", \"Sales\", each [quantityOrdered]*[priceEach]),",
-                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Added Custom\",{{\"Sales\", Currency.Type}})",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Added Custom\",{{\"Sales\", Currency.Type}}),",
+                "    #\"Merged Queries\" = Table.NestedJoin(#\"Changed Type1\", {\"productCode\"}, products, {\"productCode\"}, \"products\", JoinKind.Inner),",
+                "    #\"Expanded products\" = Table.ExpandTableColumn(#\"Merged Queries\", \"products\", {\"buyPrice\"}, {\"buyPrice\"}),",
+                "    #\"Added Custom1\" = Table.AddColumn(#\"Expanded products\", \"Margin\", each [buyPrice]*[quantityOrdered]),",
+                "    #\"Added Custom2\" = Table.AddColumn(#\"Added Custom1\", \"profit\", each [Sales]-[Margin]),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Added Custom2\",{{\"Margin\", \"total_buy_price\"}}),",
+                "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Renamed Columns\",{\"orderNumber\", \"productCode\", \"quantityOrdered\", \"priceEach\", \"orderLineNumber\", \"buyPrice\", \"Sales\", \"total_buy_price\", \"profit\"}),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Reordered Columns\",{{\"total_buy_price\", Currency.Type}, {\"profit\", Currency.Type}})",
                 "in",
-                "    #\"Changed Type1\""
+                "    #\"Changed Type2\""
               ],
               "type": "m"
             }
@@ -1951,7 +2011,7 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "double",
+            "dataType": "decimal",
             "lineageTag": "b7b54a27-f64c-4ba8-9249-0f1fb71beb9f",
             "sourceColumn": "amount",
             "summarizeBy": "sum"
@@ -1969,7 +2029,7 @@
                 "    #\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_payments csv1\" = Source{[#\"Folder Path\"=\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\\",Name=\"payments.csv\"]}[Content],",
                 "    #\"Imported CSV\" = Csv.Document(#\"C:\\Users\\Administrator\\OneDrive\\Desktop\\PB\\classicmodels\\_payments csv1\",[Delimiter=\",\", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customerNumber\", Int64.Type}, {\"checkNumber\", type text}, {\"paymentDate\", type date}, {\"amount\", type number}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customerNumber\", Int64.Type}, {\"checkNumber\", type text}, {\"paymentDate\", type date}, {\"amount\", Currency.Type}})",
                 "in",
                 "    #\"Changed Type\""
               ],
