@@ -1134,6 +1134,32 @@
           }
         ],
         "lineageTag": "3f42a750-ac67-45c0-b87c-53713ec0c290",
+        "measures": [
+          {
+            "name": "sales_2003",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE(SUM('order details'[Sales]), orders[order year] = 2003) ",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "3e5f643e-95c2-4350-bd13-187365243fd0"
+          },
+          {
+            "name": "sales_2004",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE(SUM('order details'[Sales]), orders[order year] = 2004) ",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "4602057d-ef09-4d45-a5e2-99013fbf22f0"
+          }
+        ],
         "partitions": [
           {
             "name": "orders",
