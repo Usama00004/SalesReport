@@ -1117,6 +1117,20 @@
             "lineageTag": "61a455d9-344f-4202-8ac9-9494831d382b",
             "sourceColumn": "Day Name",
             "summarizeBy": "none"
+          },
+          {
+            "name": "order year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c0a8410a-f8dd-4ab5-a574-fb97a3890662",
+            "sourceColumn": "order year",
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "3f42a750-ac67-45c0-b87c-53713ec0c290",
@@ -1140,9 +1154,11 @@
                 "    #\"Added Custom\" = Table.AddColumn(#\"Inserted Month Name\", \"Shipping_days\", each [shippedDate]-[orderDate]),",
                 "    #\"Inserted Days\" = Table.AddColumn(#\"Added Custom\", \"Days\", each Duration.Days([Shipping_days]), Int64.Type),",
                 "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Inserted Days\",{\"Shipping_days\"}),",
-                "    #\"Inserted Day Name\" = Table.AddColumn(#\"Removed Columns1\", \"Day Name\", each Date.DayOfWeekName([orderDate]), type text)",
+                "    #\"Inserted Day Name\" = Table.AddColumn(#\"Removed Columns1\", \"Day Name\", each Date.DayOfWeekName([orderDate]), type text),",
+                "    #\"Inserted Year\" = Table.AddColumn(#\"Inserted Day Name\", \"Year\", each Date.Year([orderDate]), Int64.Type),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Inserted Year\",{{\"Year\", \"order year\"}})",
                 "in",
-                "    #\"Inserted Day Name\""
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }
