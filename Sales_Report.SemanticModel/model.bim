@@ -910,6 +910,20 @@
             "expression": "sum('order details'[profit])",
             "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
             "lineageTag": "2772e366-858b-4d58-b4f9-e87e1b2c0db2"
+          },
+          {
+            "name": "MostOrderedProduct",
+            "expression": [
+              "",
+              " SELECTCOLUMNS(",
+              "    TOPN(1,",
+              "         SUMMARIZE('products',products[productName],\"TotalOrdered\", Sum('order details'[quantityOrdered])),",
+              "         [TotalOrdered],DESC",
+              "    ),",
+              "    \"MostOrderedProduct\",products[productName]",
+              " )"
+            ],
+            "lineageTag": "4d2bd8af-7eae-45f3-9dbc-686c3eb4b951"
           }
         ],
         "partitions": [
