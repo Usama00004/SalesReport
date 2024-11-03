@@ -898,6 +898,20 @@
           }
         ],
         "lineageTag": "f9006fae-bc37-4d4f-9b2f-c052887168e6",
+        "measures": [
+          {
+            "name": "total_profit",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "sum('order details'[profit])",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "2772e366-858b-4d58-b4f9-e87e1b2c0db2"
+          }
+        ],
         "partitions": [
           {
             "name": "order details",
