@@ -433,6 +433,20 @@
           }
         ],
         "lineageTag": "1395d7a6-fabd-423f-a627-2e27d64fc06e",
+        "measures": [
+          {
+            "name": "total_sales",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "sum('order details'[Sales]) ",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "34cafa8c-a6f8-49fd-a747-512852c7d4d7"
+          }
+        ],
         "partitions": [
           {
             "name": "customers",
