@@ -436,14 +436,6 @@
         "measures": [
           {
             "name": "total_sales",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"currencyCulture\":\"en-US\"}"
-              }
-            ],
-            "expression": "sum('order details'[Sales]) ",
-            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
             "lineageTag": "34cafa8c-a6f8-49fd-a747-512852c7d4d7"
           }
         ],
@@ -1850,6 +1842,21 @@
             "lineageTag": "efc87972-c983-4910-b3dd-0b6e19657bda",
             "sourceColumn": "Custom",
             "summarizeBy": "none"
+          },
+          {
+            "name": "stock_requirment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "if(products[quantityInStock]>500 , \"No\", \"Yes\")",
+            "isDataTypeInferred": true,
+            "lineageTag": "4083be43-dc7e-4ddf-b9ed-4385de2857b1",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "fc2e9f70-13d4-49b2-8e15-7dfb51611238",
