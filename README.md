@@ -16,7 +16,7 @@ Below is a preview of the dashboard:
 
 ![Dashboard Example](https://github.com/Usama00004/SalesReport/blob/main/classicmodels/Dashboard_Image.png)
 
-> _Note: Update the URL to reflect any changes if the image is moved within the repository._
+
 
 
 ## Data Sources
