@@ -25,7 +25,17 @@
       "filters": "[]",
       "height": 720.00,
       "name": "3b7580f0cc07d68d08ee",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"977839b402cc056c2154\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.605521030503024,\"y\":0,\"z\":0,\"width\":358.1487127087556,\"height\":256.60463324343795,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"order details.total_profit\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"o\",\"Entity\":\"order details\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"total_profit\"},\"Name\":\"order details.total_profit\",\"NativeReferenceName\":\"total_profit\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"total_profit\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 256.60,
+          "width": 358.15,
+          "x": 9.61,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
       "width": 1280.00
     }
   ]
