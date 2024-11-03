@@ -12,12 +12,12 @@ The Car Sales and Orders Dashboard presents comprehensive analytics on car sales
 The dashboard was built using **Power BI** (or specify the BI tool used), leveraging dynamic visuals and interactive features to provide an intuitive, data-driven experience.
 
 ## Dashboard Preview
-
 Below is a preview of the dashboard:
 
-![Dashboard Example]https://github.com/Usama00004/SalesReport/blob/main/classicmodels/Dashboard_Image.png)
+![Dashboard Example](https://github.com/Usama00004/SalesReport/blob/main/classicmodels/Dashboard_Image.png)
 
-> _Note: Replace `dashboard_example.png` with the actual image file showing a screenshot of the dashboard._
+> _Note: Update the URL to reflect any changes if the image is moved within the repository._
+
 
 ## Data Sources
 
