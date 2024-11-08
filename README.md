@@ -51,4 +51,4 @@ To use this dashboard:
 Potential improvements to enhance the dashboard experience:
 - Adding forecast analytics to predict future sales trends.
 - Integrating external factors (e.g., economic indicators) for deeper analysis.
-- Extending the dataset to include more recent years or new data fields.
+- Extending the dataset to include more recent years or new data fields
