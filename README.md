@@ -1,4 +1,4 @@
-# Car Sales and Orders Dashboard
+# Car Sales and Orders Dashboard 
 
 This project is a data visualization dashboard that provides insights into car sales and orders for the years **2003**, **2004**, and **2005**. The dashboard helps users explore sales trends, order patterns, and other key metrics to better understand performance over time.
  
