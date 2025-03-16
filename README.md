@@ -14,7 +14,7 @@ The dashboard was built using **Power BI** (or specify the BI tool used), levera
 ## Dashboard Preview
 ![Dashboard Example](https://github.com/Usama00004/SalesReport/blob/main/classicmodels/Dashboard_Image.png)
 
-## Data Sources
+## Data Sources 
 
 The dataset used in this project includes:
 - **Sales Data**: Detailed records of car sales from 2003 to 2005.
